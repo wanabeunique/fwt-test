@@ -1,0 +1,83 @@
+.accordion {
+  border: 1px solid var(--border-color);
+  display: flex;
+  width: 100%;
+  position: relative;
+  border-radius: 8px;
+  &_active {
+    border-radius: 8px 8px 0 0;
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+  &__top {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0 18px 0 15px;
+    align-self: center;
+    justify-content: space-between;
+    min-width: 100%;
+    height: 100%;
+    color: var(--gray-color);
+  }
+  &__wrapper {
+    gap: 10px;
+    max-width: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+  }
+  &__input {
+    max-width: 95px;
+    width: 100%;
+    height: 45px;
+    background: var(--light-color);
+    border-radius: 8px;
+    border: none;
+    padding: 15px;
+    font-size: 13px;
+    &:placeholder{
+      color: var(--gray-color);
+    }
+  }
+  &__content {
+    border-left: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    z-index: 2;
+    top: 100%;
+    width: calc(100% + 1.5px);
+    min-width: 100%;
+    left: -.5px;
+    position: absolute;
+    height: 85px;
+    background: var(--main-color);
+    border-radius: 0 0 8px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  &__line{
+    min-width: 12px;
+    width: 12px;
+    height: 1px;
+    background: var(--secondary-color);
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .accordion{
+    &__wrapper{
+      flex-direction: column;
+      padding: 20px 15px;
+    }
+    &__content{
+      height: max-content;
+    }
+  }
+}

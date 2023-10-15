@@ -1,0 +1,47 @@
+.gallery{
+  &__top{
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 20px;
+  }
+  &__item{
+    height: 45px;
+    grid-column-end: span 3;
+    background: var(--main-color);
+    font-size: 13px;
+  }
+  &__content{
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 45px;
+  }
+  &__spinner{
+    margin: 0 auto;
+    }
+  &__input{
+    border: 1px solid var(--border-color);
+    padding: 0 15px;
+    border-radius: 8px;
+    color: var(--secondary-color);
+    &::placeholder{
+      color: var(--gray-color);
+    }
+    
+  }
+  &__text{
+    color: var(--secondary-color);
+    grid-column: span 12;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery{
+    &__item{
+      grid-column-end: span 12;
+    }
+  }
+  
+}

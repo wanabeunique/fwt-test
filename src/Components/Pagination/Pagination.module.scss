@@ -1,0 +1,40 @@
+.pagination {
+  margin-top: 45px;
+  margin-bottom: 100px;
+  &__container {
+    display: flex;
+  }
+  &__items {
+    display: flex;
+  }
+  &__item {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    background: var(--main-color);
+    border: 1px solid var(--secondary-color);
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover:not([disabled]){
+      background: var(--hover-color);
+    }
+    &_active {
+      background: var(--secondary-color);
+      border: 1px solid var(--secondary-color);
+      color: var(--main-color);
+      &:hover:not([disabled]){
+        background: var(--secondary-color);
+      }
+    }
+  }
+  &__item[disabled]{
+    cursor: default;
+  }
+  &__svg {
+    path {
+      fill: var(--secondary-color);
+    }
+  }
+}
