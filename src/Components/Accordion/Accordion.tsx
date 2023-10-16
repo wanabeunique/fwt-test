@@ -40,9 +40,16 @@ export default function Accordion({ className }: IPropsAccordion) {
       }`}
     >
       <div
+        role="button"
+        tabIndex={0}
         className={`${styles.accordion__top}`}
         onClick={() => {
           setAccordionActive(!accordionActive);
+        }}
+        onKeyDown={(event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            setAccordionActive(!accordionActive);
+          }
         }}
       >
         <p>Created</p>

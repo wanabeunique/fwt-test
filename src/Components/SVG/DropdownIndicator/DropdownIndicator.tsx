@@ -1,10 +1,12 @@
 import { components } from 'react-select';
+// @ts-ignore
 import { type ElementConfig } from 'react';
 
-const DropdownIndicator = (
+export default function DropdownIndicator(
   props: ElementConfig<typeof components.DropdownIndicator>,
-) => {
+) {
   return (
+    /* eslint-disable-next-line react/jsx-props-no-spreading */
     <components.DropdownIndicator {...props}>
       <svg
         width="10"
@@ -21,6 +23,4 @@ const DropdownIndicator = (
       </svg>
     </components.DropdownIndicator>
   );
-};
-
-export default DropdownIndicator;
+}

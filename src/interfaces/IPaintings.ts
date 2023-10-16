@@ -1,5 +1,5 @@
 export default interface IPaintings {
-  anyObjectField?: string | number;
+  imageUrl: string | undefined;
   id?: number;
   name?: string;
   page?: number;

@@ -1,6 +1,6 @@
 import AsyncSelect from 'react-select';
 import { useQuery } from 'react-query';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import styles from './Gallery.module.scss';
 import { setCurrentAuthor } from '../../store/reducers/currentAuthorSlice';
@@ -38,6 +38,7 @@ export default function Gallery() {
   );
 
   const [queryName, setQueryName] = useState('');
+
   const debouncedSearch = useDebounce(queryName);
   const debouncedSearchDateStart = useDebounce(currantDateStart);
   const debouncedSearchDateEnd = useDebounce(currantDateEnd);
@@ -75,10 +76,14 @@ export default function Gallery() {
     },
   );
 
-  useEffect(() => {
-    refetch();
-    refetchCount();
+  const fetchData = useCallback(async () => {
+    await refetch();
+    await refetchCount();
     setPaintings(paintingsData);
+  }, [refetch, refetchCount, paintingsData]);
+
+  useEffect(() => {
+    fetchData();
   }, [
     currentAuthor,
     currentLocation,
@@ -87,6 +92,7 @@ export default function Gallery() {
     debouncedSearch,
     debouncedSearchDateStart,
     debouncedSearchDateEnd,
+    fetchData,
   ]);
 
   const { data: authorsData } = useQuery<IAuthor[]>('authors', getAuthors, {
@@ -171,7 +177,8 @@ export default function Gallery() {
                 return (
                   <Card
                     key={paint.id}
-                    {...paint}
+                    name={paint.name}
+                    imageUrl={paint.imageUrl}
                     painterNameObject={authorsData[paint.authorId - 1]}
                     locationNameObject={locationsData[paint.locationId - 1]}
                   />

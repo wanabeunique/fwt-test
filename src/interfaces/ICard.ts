@@ -7,4 +7,6 @@ export interface ICard {
   created: string;
   imageUrl: string;
   name: string;
+  authorId: number;
+  locationId: number;
 }

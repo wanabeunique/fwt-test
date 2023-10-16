@@ -17,6 +17,7 @@ module.exports = {
     "prettier/prettier": "error",
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": [1, { extensions: [".tsx", ".ts"] }],
+    "import/no-named-as-default": 0,
     "react-refresh/only-export-components": [
       "warn",
       { allowConstantExport: true },

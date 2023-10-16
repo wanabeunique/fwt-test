@@ -1,5 +1,6 @@
 import axios from 'axios';
 import IPaintings from '../interfaces/IPaintings';
+import { ICard } from '../interfaces/ICard';
 
 export default async function getPaintings({
   id,
@@ -10,7 +11,7 @@ export default async function getPaintings({
   end,
   authorId,
   locationId,
-}: Partial<IPaintings> = {}): Promise<IPaintings[]> {
+}: Partial<IPaintings> = {}): Promise<ICard[]> {
   const searchLine = `https://test-front.framework.team/paintings?${
     id ? `id=${id}&` : ''
   }${name ? `q=${name}&` : ''}${page ? `_page=${page}&` : ''}${
