@@ -178,6 +178,7 @@ export default function Gallery() {
                   <Card
                     key={paint.id}
                     name={paint.name}
+                    created={paint.created}
                     imageUrl={paint.imageUrl}
                     painterNameObject={authorsData[paint.authorId - 1]}
                     locationNameObject={locationsData[paint.locationId - 1]}

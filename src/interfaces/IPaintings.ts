@@ -1,4 +1,5 @@
 export default interface IPaintings {
+  created: string | undefined;
   imageUrl: string | undefined;
   id?: number;
   name?: string;
