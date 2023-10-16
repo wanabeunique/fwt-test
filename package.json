@@ -1,5 +1,5 @@
 {
-  "homepage": "https://wanabeunique.github.io/fwt-test",
+  "homepage": "https://wanabeunique.github.io/fwt-test/",
   "name": "fwt-test",
   "private": true,
   "version": "0.0.0",
@@ -9,7 +9,7 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "redeploy": "npm run build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
