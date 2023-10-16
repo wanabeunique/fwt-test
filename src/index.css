@@ -82,13 +82,13 @@ a {
   padding: 0 40px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .container {
     padding: 0 34px;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .container {
     padding: 0 20px;
   }

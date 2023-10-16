@@ -44,13 +44,13 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .card{
     grid-column-end: span 6;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .card{
     grid-column-end: span 12;
   }
