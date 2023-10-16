@@ -18,13 +18,130 @@ export default function Pagination({
 }: IPagination) {
   const { next, second } = paintingsPages || { next: false, second: false };
   const dispatch = useAppDispatch();
+
   function HandleSwitchPage(page: number) {
-    if (page !== currentPage)
+    if (page === currentPage) return;
+
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
     dispatch(setCurrentPage(page));
+  }
+
+  function func() {
+    if (next === false && currentPage !== 1) {
+      return (
+        <div className={styles.pagination__items}>
+          {currentPage - 2 >= 1 && (
+            <button
+              type="button"
+              className={styles.pagination__item}
+              onClick={() => {
+                HandleSwitchPage(currentPage - 2);
+              }}
+            >
+              {currentPage - 2}
+            </button>
+          )}
+          <button
+            type="button"
+            className={styles.pagination__item}
+            onClick={() => {
+              HandleSwitchPage(currentPage - 1);
+            }}
+          >
+            {currentPage - 1}
+          </button>
+          <button
+            type="button"
+            className={`${styles.pagination__item} ${styles.pagination__item_active}`}
+            onClick={() => {
+              HandleSwitchPage(currentPage);
+            }}
+          >
+            {currentPage}
+          </button>
+        </div>
+      );
+    }
+
+    if (currentPage === 1) {
+      return (
+        <div className={styles.pagination__items}>
+          <button
+            type="button"
+            className={`${styles.pagination__item} ${styles.pagination__item_active}`}
+            onClick={() => {
+              HandleSwitchPage(currentPage);
+            }}
+          >
+            {currentPage}
+          </button>
+          {next && (
+            <button
+              type="button"
+              className={styles.pagination__item}
+              onClick={() => {
+                HandleSwitchPage(currentPage + 1);
+              }}
+            >
+              {currentPage + 1}
+            </button>
+          )}
+          {second && (
+            <button
+              type="button"
+              className={styles.pagination__item}
+              onClick={() => {
+                HandleSwitchPage(currentPage + 2);
+              }}
+            >
+              {currentPage + 2}
+            </button>
+          )}
+        </div>
+      );
+    }
+
+    if (currentPage !== 1 && next === true) {
+      return (
+        <div className={styles.pagination__items}>
+          <button
+            type="button"
+            className={styles.pagination__item}
+            onClick={() => {
+              HandleSwitchPage(currentPage - 1);
+            }}
+          >
+            {currentPage - 1}
+          </button>
+          <button
+            type="button"
+            className={`${styles.pagination__item} ${styles.pagination__item_active}`}
+            onClick={() => {
+              HandleSwitchPage(currentPage);
+            }}
+          >
+            {currentPage}
+          </button>
+          {next && (
+            <button
+              type="button"
+              className={styles.pagination__item}
+              onClick={() => {
+                HandleSwitchPage(currentPage + 1);
+              }}
+            >
+              {currentPage + 1}
+            </button>
+          )}
+          \
+        </div>
+      );
+    }
+
+    return null;
   }
 
   return (
@@ -50,107 +167,7 @@ export default function Pagination({
         >
           <Prev disabled={!(currentPage - 1 >= 1)} />
         </button>
-        {next === false && currentPage !== 1 ? (
-          <div className={styles.pagination__items}>
-            {currentPage - 2 >= 1 && (
-              <button
-                type="button"
-                className={styles.pagination__item}
-                onClick={() => {
-                  HandleSwitchPage(currentPage - 2);
-                }}
-              >
-                {currentPage - 2}
-              </button>
-            )}
-            <button
-              type="button"
-              className={styles.pagination__item}
-              onClick={() => {
-                HandleSwitchPage(currentPage - 1);
-              }}
-            >
-              {currentPage - 1}
-            </button>
-            <button
-              type="button"
-              className={`${styles.pagination__item} ${styles.pagination__item_active}`}
-              onClick={() => {
-                HandleSwitchPage(currentPage);
-              }}
-            >
-              {currentPage}
-            </button>
-          </div>
-        ) : null}
-        {currentPage === 1 ? (
-          <div className={styles.pagination__items}>
-            <button
-              type="button"
-              className={`${styles.pagination__item} ${styles.pagination__item_active}`}
-              onClick={() => {
-                HandleSwitchPage(currentPage);
-              }}
-            >
-              {currentPage}
-            </button>
-            {next && (
-              <button
-                type="button"
-                className={styles.pagination__item}
-                onClick={() => {
-                  HandleSwitchPage(currentPage + 1);
-                }}
-              >
-                {currentPage + 1}
-              </button>
-            )}
-            {second && (
-              <button
-                type="button"
-                className={styles.pagination__item}
-                onClick={() => {
-                  HandleSwitchPage(currentPage + 2);
-                }}
-              >
-                {currentPage + 2}
-              </button>
-            )}
-          </div>
-        ) : null}
-        {currentPage !== 1 && next === true ? (
-          <div className={styles.pagination__items}>
-            <button
-              type="button"
-              className={styles.pagination__item}
-              onClick={() => {
-                HandleSwitchPage(currentPage - 1);
-              }}
-            >
-              {currentPage - 1}
-            </button>
-            <button
-              type="button"
-              className={`${styles.pagination__item} ${styles.pagination__item_active}`}
-              onClick={() => {
-                HandleSwitchPage(currentPage);
-              }}
-            >
-              {currentPage}
-            </button>
-            {next && (
-              <button
-                type="button"
-                className={styles.pagination__item}
-                onClick={() => {
-                  HandleSwitchPage(currentPage + 1);
-                }}
-              >
-                {currentPage + 1}
-              </button>
-            )}
-          </div>
-        ) : null}
+        {func()}
         <button
           type="button"
           disabled={!next}
