@@ -63,6 +63,8 @@ export default function Accordion({ className }: IPropsAccordion) {
               type="number"
               name=""
               id=""
+              min={0}
+              max={2023}
               placeholder="from"
               value={dateStart}
               onChange={(event) => {
@@ -74,6 +76,8 @@ export default function Accordion({ className }: IPropsAccordion) {
               className={styles.accordion__input}
               type="number"
               name=""
+              min={0}
+              max={2023}
               id=""
               placeholder="before"
               value={dateEnd}

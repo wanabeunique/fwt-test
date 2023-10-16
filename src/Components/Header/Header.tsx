@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <div className={styles.header}>
       <div className={`container ${styles.header__container}`}>
-        <a href="/" className={styles.header__logo}>
+        <a href="/fwt-test/" className={styles.header__logo}>
           <Logo />
         </a>
         <button

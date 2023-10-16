@@ -19,8 +19,14 @@ export default function Pagination({
   const { next, second } = paintingsPages || { next: false, second: false };
   const dispatch = useAppDispatch();
   function HandleSwitchPage(page: number) {
+    if (page !== currentPage)
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
     dispatch(setCurrentPage(page));
   }
+
   return (
     <div className={styles.pagination}>
       <div className={`${styles.pagination__container} container`}>
