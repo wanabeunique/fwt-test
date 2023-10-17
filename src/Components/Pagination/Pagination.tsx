@@ -136,7 +136,6 @@ export default function Pagination({
               {currentPage + 1}
             </button>
           )}
-          \
         </div>
       );
     }
